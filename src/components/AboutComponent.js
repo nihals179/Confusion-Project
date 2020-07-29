@@ -1,32 +1,32 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import { baseUrl } from '../shared/baseUrl';
 
 
 function RenderLeader({leader}) {
-    console.log({leader})
     return (
-        <Media className="mt-4">
-        <Media className="mr-4 " left href="#">
-          <Media object src={leader.image} alt="Generic placeholder image" />
-        </Media>
-        <Media className="ml-2" body>
-          <Media heading className="mb-2"><b>
+        <div key={leader.id} >
+        <Media className="mt-4" >
+            <Media className="mr-4 " left href="#">
+             <Media object src={baseUrl + leader.image} alt="Generic placeholder image" />
+            </Media>
+            <Media className="ml-2" body>
+             <Media heading className="mb-2"><b>
             {leader.name}</b>
-          </Media>
-          {leader.designation}<br/><br/>
-          {leader.description}
-          </Media>
+             </Media>
+             {leader.designation}<br/><br/>
+              {leader.description}
+            </Media>
       </Media>
+      </div>
     )
 }
 
 
 
 function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leader.leaders.map((leader) => {
         return (
             <RenderLeader leader={leader}/>
         );
